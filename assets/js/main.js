@@ -153,7 +153,7 @@ titleDom.addEventListener('click', function () {
     console.log(easterEggCounter);
 
     if (easterEggCounter == 5) {
-
+        titleDom.classList.add('fa-rotate-180')
         slideMarkup.insertAdjacentHTML('afterbegin', easterEggHTML);
 
         carouselSlidesHTML = document.querySelectorAll('img');
