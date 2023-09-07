@@ -40,8 +40,8 @@ const carousel = [
         link: './assets/img/05.webp',
         status: 'hidden'
 
-    },
-]
+    }
+];
 
 const slideMarkup = document.querySelector('.image');
 
@@ -90,10 +90,51 @@ function prevSlide() {
 
     carouselSlidesHTML[activeSlide].classList.remove('active');
 
-    if (activeSlide === 0){
+    if (activeSlide === 0) {
         activeSlide = carousel.length
     }
     activeSlide--
 
     carouselSlidesHTML[activeSlide].classList.add('active');
 }
+
+
+const playCarouselButton = document.querySelector('.play');
+const stopCarouselButton = document.querySelector('.stop');
+console.log(playCarouselButton, stopCarouselButton);
+playCarouselButton.addEventListener('click', function () {
+
+    const carouselPlayer = setInterval(nextSlide, 3000);
+
+    playCarouselButton.classList.add('d-none');
+    playCarouselButton.classList.remove('d-inline-block');
+    stopCarouselButton.classList.remove('d-none');
+    stopCarouselButton.classList.add('d-inline-block');
+
+    stopCarouselButton.addEventListener('click', function () {
+
+        stopCarouselButton.classList.add('d-none');
+        stopCarouselButton.classList.remove('d-inline-block');
+        playCarouselButton.classList.remove('d-none');
+        playCarouselButton.classList.add('d-inline-block');
+
+
+        clearInterval(carouselPlayer);
+
+        console.log(activeSlide);
+        // activeSlide = 0;
+        console.log(activeSlide);
+
+        resetSlide(activeSlide, carouselSlidesHTML);
+    })
+
+})
+
+
+function resetSlide(index, carouselArray){
+    carouselArray[index].classList.remove('active');
+    index = 0
+    carouselArray[index].classList.add('active');
+}
+
+
