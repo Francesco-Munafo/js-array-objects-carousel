@@ -74,7 +74,7 @@ function nextSlide() {
 
     activeSlide++; // successiva slide
 
-    if (activeSlide === carousel.length) {
+    if (activeSlide === carouselSlidesHTML.length) {
         activeSlide = 0;
     }
 
@@ -91,7 +91,7 @@ function prevSlide() {
     carouselSlidesHTML[activeSlide].classList.remove('active');
 
     if (activeSlide === 0) {
-        activeSlide = carousel.length
+        activeSlide = carouselSlidesHTML.length
     }
     activeSlide--
 
@@ -156,9 +156,9 @@ titleDom.addEventListener('click', function () {
 
         slideMarkup.insertAdjacentHTML('afterbegin', easterEggHTML);
 
+        carouselSlidesHTML = document.querySelectorAll('img');
         activeSlide++;
 
-        carouselSlidesHTML = document.querySelectorAll('img');
         console.log(carouselSlidesHTML);
         
         console.log(activeSlide);
