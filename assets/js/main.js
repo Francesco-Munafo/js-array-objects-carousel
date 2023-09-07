@@ -61,7 +61,7 @@ function generateCrousel(carousel) {
 }
 generateCrousel(carousel);
 
-const carouselSlidesHTML = document.querySelectorAll('img');
+let carouselSlidesHTML = document.querySelectorAll('img');
 
 nextElement.addEventListener('click', nextSlide);
 
@@ -78,8 +78,8 @@ function nextSlide() {
         activeSlide = 0;
     }
 
-    console.log(activeSlide);
-    console.log(carouselSlidesHTML[activeSlide]);
+    // console.log(activeSlide);
+    // console.log(carouselSlidesHTML[activeSlide]);
     carouselSlidesHTML[activeSlide].classList.add('active');
 
 }
@@ -101,7 +101,6 @@ function prevSlide() {
 
 const playCarouselButton = document.querySelector('.play');
 const stopCarouselButton = document.querySelector('.stop');
-console.log(playCarouselButton, stopCarouselButton);
 playCarouselButton.addEventListener('click', function () {
 
     const carouselPlayer = setInterval(nextSlide, 3000);
@@ -121,20 +120,63 @@ playCarouselButton.addEventListener('click', function () {
 
         clearInterval(carouselPlayer);
 
-        console.log(activeSlide);
-        // activeSlide = 0;
-        console.log(activeSlide);
-
         resetSlide(activeSlide, carouselSlidesHTML);
     })
 
 })
 
 
-function resetSlide(index, carouselArray){
+function resetSlide(index, carouselArray) {
     carouselArray[index].classList.remove('active');
     index = 0
     carouselArray[index].classList.add('active');
 }
 
 
+
+
+/* ########################
+
+        EASTER EGG
+
+########################### */
+
+
+const titleDom = document.querySelector('.title');
+
+let easterEggCounter = 0;
+
+titleDom.addEventListener('click', function () {
+    easterEggCounter++
+    const easterEggHTML = '<img class="img-fluid rounded-2 object-fit-contain" src="./assets/img/easter_egg.jpg" alt="" srcset="">';
+
+    console.log(easterEggCounter);
+
+    if (easterEggCounter == 5) {
+
+        slideMarkup.insertAdjacentHTML('afterbegin', easterEggHTML);
+
+        activeSlide++;
+
+        carouselSlidesHTML = document.querySelectorAll('img');
+        console.log(carouselSlidesHTML);
+        
+        console.log(activeSlide);
+        resetSlide(activeSlide, carouselSlidesHTML);
+
+        activeSlide = 0
+
+        // console.log(carouselSlidesHTML);
+        // console.log(carouselSlidesHTML);
+        // console.log(carousel);
+
+
+
+    }
+})
+
+
+function activeEasterEgg(index, carouselArray) {
+    carouselArray[index].classList.remove('active');
+    carouselArray[index].classList.add('active');
+}

@@ -20,8 +20,12 @@ img{
     width: 100%!important;
 }
 
-.play{
+.play, .stop{
     height: 50px;
     width: 50px;
     
+}
+
+h1{
+    text-shadow: 2px 2px rgb(255, 0, 0);
 }
