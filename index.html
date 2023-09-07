@@ -6,8 +6,37 @@
     <title>Carousel</title>
     <!-- BS5 LINK -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- FA LINK -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+    <main class="vh-100 bg-dark">
+        <div class="container pt-3 position-relative">
+            <h1 class="text-center text-secondary text-decoration-underline">Welcome to the carousHell</h1>
+            <div class="slider d-flex border border-1 border-black rounded-3">
+                <div class="image">
+                    <img class="img-fluid hidde rounded-2" src="./assets/img/01.webp" alt="" srcset="">
+                </div>
+                <div class="thumbnails">
+
+                </div>
+
+            </div>
+            <div class="controls d-flex justify-content-between">
+
+                <div class="previous position-absolute top-50 bg-light border border-black ms-1 rounded-5 p-2 ">
+                    <i class="fa-solid fa-left-long fs-1"></i>
+                </div>
+                <div class="next position-absolute top-50 end-0 bg-light border border-black me-3 rounded-5 p-2">
+                    <i class="fa-solid fa-right-long fs-1"></i>
+                </div>
+            </div>
+        </div>
+        
+
+    </main>
     
 
     <script src="./assets/js/main.js"></script>
