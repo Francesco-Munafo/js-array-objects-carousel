@@ -6,6 +6,16 @@
     display: none;
 }
 
-.image{
+img:not(.active){
+    display: none;
+}
 
+.slider{
+    height: 700px;
+    width: auto;
+}
+
+img{
+    height: 100%!important;
+    width: 100%!important;
 }

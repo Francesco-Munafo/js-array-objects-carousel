@@ -17,49 +17,83 @@ E se volessi un bottone per invertire la "direzione" del carosello?
 
 const carousel = [
     {
-        link: './assets.img/01.webp',
+        link: './assets/img/01.webp',
         status: 'active'
 
     },
     {
-        link: './assets.img/02.webp',
+        link: './assets/img/02.webp',
+        status: 'hiden'
+
+    },
+    {
+        link: './assets/img/03.webp',
         status: 'hidden'
 
     },
     {
-        link: './assets.img/03.webp',
+        link: './assets/img/04.webp',
         status: 'hidden'
 
     },
     {
-        link: './assets.img/04.webp',
-        status: 'hidden'
-
-    },
-    {
-        link: './assets.img/05.webp',
+        link: './assets/img/05.webp',
         status: 'hidden'
 
     },
 ]
 
-const imgDomElement = document.querySelector('.image');
-const previousDomElement = document.querySelector('.previous');
+const slideMarkup = document.querySelector('.image');
+
+const previousElement = document.querySelector('.previous');
 const nextElement = document.querySelector('.next');
+let activeSlide = 0;
 
 
+function generateCrousel(carousel) {
+    for (let i = 0; i < carousel.length; i++) {
+        const imgLink = carousel[i].link;
+        console.log(imgLink);
 
-nextElement.addEventListener('click', function () {
+        const imgElementMarkup = `<img class="img-fluid ${activeSlide == i ? 'active' : ''} rounded-2 object-fit-contain" src="${carousel[i].link}" alt="" srcset="">`;
+        slideMarkup.innerHTML += imgElementMarkup;
+    }
+}
+generateCrousel(carousel);
 
-    carousel.forEach((image, index, array) => {
-        if (image.status === 'active') {
-            image.status = 'hidden'
-        }
-        array[index + 1].status = 'active'
-        if (image.status === 'active'){
-            slide
-        }
+const carouselSlidesHTML = document.querySelectorAll('img');
+
+nextElement.addEventListener('click', nextSlide);
 
 
-    });
-})
+function nextSlide() {
+    console.log(activeSlide);
+    console.log(carouselSlidesHTML[activeSlide]);
+
+    carouselSlidesHTML[activeSlide].classList.remove('active');
+
+    activeSlide++; // successiva slide
+
+    if (activeSlide === carousel.length) {
+        activeSlide = 0;
+    }
+
+    console.log(activeSlide);
+    console.log(carouselSlidesHTML[activeSlide]);
+    carouselSlidesHTML[activeSlide].classList.add('active');
+
+}
+
+previousElement.addEventListener('click', prevSlide);
+
+function prevSlide() {
+
+    carouselSlidesHTML[activeSlide].classList.remove('active');
+
+    if (activeSlide === 0){
+        activeSlide = carousel.length
+    }
+    activeSlide--
+
+    carouselSlidesHTML[activeSlide].classList.add('active');
+}
